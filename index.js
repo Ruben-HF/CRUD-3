@@ -32,8 +32,8 @@ function render() {
     datos.forEach((element,index) => {
         lista.innerHTML += `
         <td> ${element.texto} </td>
-        <td> <button onclick="editar(${index})"> Editar </button> </td>
-        <td> <button onclick="borrar(${index})"> Borrar </button> </td>
+        <td> <button onclick="editar(${index})" class="btn btn-secondary"> Editar </button> </td>
+        <td> <button onclick="borrar(${index})" class="btn btn-danger"> Borrar </button> </td>
         `
     });
 
@@ -58,8 +58,8 @@ function editar(ps){
 
             lista.innerHTML = `
             <td> ${nombre} </td>
-            <td> <button onclick="reguardar(${i})"> Guardar </button> </td>
-            <td> <button onclick=""> Salir </button> </td>
+            <td> <button onclick="reguardar(${i})" class="btn btn-secondary"> Guardar </button> </td>
+            <td> <button onclick="salir(this)" class="btn btn-danger"> Salir </button> </td>
             `
         }
     }
@@ -78,6 +78,12 @@ function reguardar(i){
     localStorage.setItem('valores', JSON.stringify(datos))
 
     document.getElementById('textotext').value = ``
+
+    render()
+}
+
+function salir(e){
+    e.parentElement.remove()
     render()
 }
 
